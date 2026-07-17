@@ -16,14 +16,21 @@ import {
 import type { ReactNode } from "react";
 import userAvatar from "@/assets/user-avatar.jpg";
 
-const navItems = [
+type NavItem = {
+  to: "/" | "/lessons" | "/quizzes" | "/achievements" | "/games" | "/settings";
+  label: string;
+  icon: typeof LayoutDashboard;
+  exact?: boolean;
+};
+
+const navItems: NavItem[] = [
   { to: "/", label: "Dashboard", icon: LayoutDashboard, exact: true },
   { to: "/lessons", label: "Lessons", icon: BookOpen },
   { to: "/quizzes", label: "Quizzes", icon: ClipboardCheck },
   { to: "/achievements", label: "Achievements", icon: Trophy },
   { to: "/games", label: "Games", icon: Gamepad2 },
   { to: "/settings", label: "Settings", icon: Settings },
-] as const;
+];
 
 export function AppShell({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
