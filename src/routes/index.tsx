@@ -263,8 +263,7 @@ function Dashboard() {
             </div>
           </div>
         </section>
-      </main>
-    </div>
+    </AppShell>
   );
 }
 
