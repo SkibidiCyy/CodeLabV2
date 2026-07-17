@@ -1,23 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  LayoutDashboard,
   BookOpen,
-  ClipboardCheck,
   Trophy,
-  Gamepad2,
-  Settings,
-  LogOut,
-  Search,
-  Bell,
   ChevronDown,
   Users,
   Star,
-  Flame,
-  Moon,
   Target,
   Calendar,
   Activity,
   Award,
+  ClipboardCheck,
 } from "lucide-react";
 import {
   LineChart,
@@ -29,20 +21,11 @@ import {
   Tooltip,
 } from "recharts";
 import heroCoder from "@/assets/hero-coder.png";
-import userAvatar from "@/assets/user-avatar.jpg";
+import { AppShell } from "@/components/app-shell";
 
 export const Route = createFileRoute("/")({
   component: Dashboard,
 });
-
-const navItems = [
-  { key: "dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { key: "lessons", label: "Lessons", icon: BookOpen },
-  { key: "quizzes", label: "Quizzes", icon: ClipboardCheck },
-  { key: "achievements", label: "Achievements", icon: Trophy },
-  { key: "games", label: "Games", icon: Gamepad2 },
-  { key: "settings", label: "Settings", icon: Settings },
-];
 
 const progressData = [
   { day: "Mon", value: 22 },
