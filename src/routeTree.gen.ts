@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as QuizzesRouteImport } from './routes/quizzes'
 import { Route as LessonsRouteImport } from './routes/lessons'
+import { Route as AchievementsRouteImport } from './routes/achievements'
 import { Route as IndexRouteImport } from './routes/index'
 
 const QuizzesRoute = QuizzesRouteImport.update({
@@ -23,6 +24,11 @@ const LessonsRoute = LessonsRouteImport.update({
   path: '/lessons',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AchievementsRoute = AchievementsRouteImport.update({
+  id: '/achievements',
+  path: '/achievements',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,30 +37,34 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/achievements': typeof AchievementsRoute
   '/lessons': typeof LessonsRoute
   '/quizzes': typeof QuizzesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/achievements': typeof AchievementsRoute
   '/lessons': typeof LessonsRoute
   '/quizzes': typeof QuizzesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/achievements': typeof AchievementsRoute
   '/lessons': typeof LessonsRoute
   '/quizzes': typeof QuizzesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/lessons' | '/quizzes'
+  fullPaths: '/' | '/achievements' | '/lessons' | '/quizzes'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/lessons' | '/quizzes'
-  id: '__root__' | '/' | '/lessons' | '/quizzes'
+  to: '/' | '/achievements' | '/lessons' | '/quizzes'
+  id: '__root__' | '/' | '/achievements' | '/lessons' | '/quizzes'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AchievementsRoute: typeof AchievementsRoute
   LessonsRoute: typeof LessonsRoute
   QuizzesRoute: typeof QuizzesRoute
 }
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LessonsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/achievements': {
+      id: '/achievements'
+      path: '/achievements'
+      fullPath: '/achievements'
+      preLoaderRoute: typeof AchievementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AchievementsRoute: AchievementsRoute,
   LessonsRoute: LessonsRoute,
   QuizzesRoute: QuizzesRoute,
 }
